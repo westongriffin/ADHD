@@ -120,9 +120,22 @@ nav.main a {
 nav.main a:hover { background: var(--page); text-decoration: none; color: var(--ink); }
 nav.main a[aria-current="page"] { background: var(--accent); color: #fff; }
 
+/* Theme toggle — moon in light mode, sun in dark mode */
+.theme-toggle {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 44px; height: 44px; padding: 0;
+  background: none; border: 1px solid var(--border); border-radius: 8px;
+  color: var(--ink); cursor: pointer;
+}
+.theme-toggle:hover { background: var(--page); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .moon { display: none; }
+
 /* Hamburger toggle — hidden on desktop, replaces the pill row on small screens */
 .nav-toggle {
-  display: none; margin-left: auto; flex: none;
+  display: none; flex: none;
   flex-direction: column; justify-content: center; align-items: stretch; gap: 5px;
   width: 44px; height: 44px; padding: 11px 10px;
   background: none; border: 1px solid var(--border); border-radius: 8px;
@@ -139,6 +152,7 @@ nav.main a[aria-current="page"] { background: var(--accent); color: #fff; }
 
 @media (max-width: 640px) {
   header.site .bar { position: relative; }
+  .theme-toggle { margin-left: auto; } /* nav is absolute here, so this takes over the push */
   .nav-toggle { display: flex; }
   nav.main {
     display: none;
