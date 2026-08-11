@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADHD Screeners — adhdguide</title>
+  <meta name="description" content="Two ADHD self-screeners — a 20-item quick screen and a 56-item exhaustive screen — that check childhood onset, cross-context presence, and the look-alikes (anxiety, depression, sleep, bipolar, autism, trauma, OCD).">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='none' stroke='%232a78d6' stroke-width='7'/%3E%3Cpath d='M24 62 L42 44 L54 56 L78 32' fill='none' stroke='%23eb6834' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <div class="bar">
+      <a class="brand" href="index.html">adhd<span>guide</span></a>
+      <nav class="main" aria-label="Main">
+        <a href="index.html">Overview</a>
+        <a href="presentations.html">The 3 Presentations</a>
+        <a href="lookalikes.html">Look-alikes</a>
+        <a href="screeners.html" aria-current="page">Take a Screener</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="chooser">
+      <h1>Take a Screener</h1>
+      <p>
+        Both screeners ask how often each statement describes you, from <em>never</em> to <em>very
+        often</em>. Answer for <strong>your whole adult life at baseline</strong> — not your worst
+        month, not who you'd like to be. Alongside the trait items, both screeners include the
+        <strong>context checks</strong> a diagnosis actually requires (childhood onset,
+        cross-setting presence, real impairment) and <strong>screening items</strong> for the
+        patterns that famously imitate ADHD — anxiety, depression, sleep problems, bipolar spectrum,
+        autism, trauma, and OCD. If your answers fit a look-alike pattern, your result will carry a
+        ⚑ flag explaining the possible mix-up.
+      </p>
+
+      <div class="grid cols-2">
+        <div class="card" id="short">
+          <p class="kicker">≈ 5 minutes · 21 items</p>
+          <h2 style="margin:0.25rem 0">Quick screener</h2>
+          <p>Trait items across all four domains, the three context checks, and seven look-alike
+          screeners. Gives a first hypothesis with a coarse look-alike check.</p>
+          <p><button class="btn" id="start-short" type="button">Start the quick screener</button></p>
+        </div>
+        <div class="card" id="full">
+          <p class="kicker">≈ 15 minutes · 56 items</p>
+          <h2 style="margin:0.25rem 0">Exhaustive screener</h2>
+          <p>Full coverage of inattention, hyperactivity-impulsivity, executive function, and
+          emotional regulation, six onset/context/impairment items, and a complete 20-item
+          look-alike screen across seven patterns.</p>
+          <p><button class="btn" id="start-full" type="button">Start the exhaustive screener</button></p>
+        </div>
+      </div>
+
+      <div class="callout caution">
+        <p><strong>Before you start:</strong> this is a self-reflection tool, not a diagnostic
+        instrument, and its flags are hypotheses, not findings. If you're currently inside a
+        depressive episode, an anxiety spike, a stretch of terrible sleep, or fresh grief, your
+        answers will reflect the state more than the trait — the honest move is to retake it when
+        the storm has passed, and to bring the state itself to a professional now.</p>
+      </div>
+    </section>
+
+    <section id="quiz" hidden>
+      <p class="quiz-meta" id="q-count"></p>
+      <div class="quiz-progress"><div id="progress-fill" style="width:0%"></div></div>
+      <p class="q-text" id="q-text"></p>
+      <div class="likert" id="likert" role="group" aria-label="Answer options"></div>
+      <div class="quiz-nav">
+        <button class="btn ghost" id="btn-back" type="button">← Back</button>
+        <span class="quiz-meta">Selecting an answer advances automatically.</span>
+      </div>
+    </section>
+
+    <section id="results" hidden>
+      <div class="card" id="results-body"></div>
+    </section>
+  </main>
+
+  <footer class="site">
+    <p>adhdguide — results are hypotheses for self-observation, not measurements, diagnoses, or
+    professional advice. Domain scores compare your agreement across ADHD trait patterns; the
+    flags compare it against known look-alike patterns.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Three Presentations — adhdguide</title>
+  <meta name="description" content="Full profiles of ADHD's three presentations — inattentive, hyperactive-impulsive, and combined — plus how ADHD changes across the lifespan and why women and girls get missed.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='none' stroke='%232a78d6' stroke-width='7'/%3E%3Cpath d='M24 62 L42 44 L54 56 L78 32' fill='none' stroke='%23eb6834' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site">
+    <div class="bar">
+      <a class="brand" href="index.html">adhd<span>guide</span></a>
+      <nav class="main" aria-label="Main">
+        <a href="index.html">Overview</a>
+        <a href="presentations.html" aria-current="page">The 3 Presentations</a>
+        <a href="lookalikes.html">Look-alikes</a>
+        <a href="screeners.html">Take a Screener</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h1>The Three Presentations</h1>
+    <p>
+      The DSM sorts ADHD by which symptom cluster currently dominates: <strong>inattentive</strong>,
+      <strong>hyperactive-impulsive</strong>, or <strong>combined</strong>. Note the word
+      <em>presentation</em>, not <em>subtype</em> — the same person commonly moves between them over
+      a lifetime as hyperactivity fades and demands grow. Each profile below covers the pattern, its
+      adult form, who gets missed, and the mislabelings it attracts. Jump to a presentation:
+    </p>
+    <nav id="pres-jump" class="type-jump" aria-label="Jump to presentation"></nav>
+    <div id="pres-list"></div>
+
+    <h2 id="lifespan">Across the lifespan</h2>
+    <p>
+      ADHD doesn't disappear with age — it <em>changes shape</em>. Symptoms stay roughly constant
+      while the scaffolding around a person falls away and the demands pile up, which is why
+      trouble often peaks at transitions:
+    </p>
+    <div class="table-scroll">
+      <table>
+        <caption>The same condition, different costumes by age</caption>
+        <thead>
+          <tr><th scope="col">Life stage</th><th scope="col">Typical picture</th><th scope="col">The trap</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Childhood</td><td>Visible motion, blurting, daydreaming; school flags the disruptive kids and misses the quiet ones</td><td>Only the hyperactive boys get referred; inattentive kids get "doesn't apply herself"</td></tr>
+          <tr><td>Adolescence</td><td>Hyperactivity fades toward restlessness; disorganization costs rise as scaffolding (parents, small classes) thins</td><td>Struggles read as attitude, laziness, or phone addiction</td></tr>
+          <tr><td>University / first job</td><td>External structure vanishes; deadline all-nighters and dropped balls; compensations collapse at scale</td><td>First failure after a "gifted" childhood reads as burnout or depression alone</td></tr>
+          <tr><td>Adulthood</td><td>Inner restlessness, time-blindness, admin avalanche, relationship friction over reliability and listening</td><td>Adults are told "you can't have ADHD, you did fine in school" — compensation isn't absence</td></tr>
+          <tr><td>Parenthood &amp; midlife</td><td>Executive load doubles; many parents recognize themselves in their child's assessment</td><td>Decades of self-blame calcify into "this is just who I am"</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="missed">Why women and girls get missed</h2>
+    <p>
+      The referral pipeline was built on disruptive schoolboys. Girls with ADHD are more often
+      inattentive-presenting, more heavily socialized to compensate — copying homework rules,
+      masking restlessness as chattiness, burning private hours to keep grades respectable — and more
+      likely to have their downstream exhaustion labeled <strong>anxiety</strong> or
+      <strong>depression</strong> while the engine underneath goes unexamined. Many are diagnosed
+      only in adulthood, often after a daughter or son is. None of this means ADHD is different in
+      women; it means the <em>visibility</em> is different, and clinicians (and screeners) have to
+      look past loudness to find it.
+    </p>
+
+    <div class="callout caution">
+      <p><strong>Presentation labels are descriptions, not destinies.</strong> They tell a clinician
+      which symptom list you currently satisfy — nothing more. If your pattern shifted over the
+      years, that's the expected course, not a contradiction. And if none of these profiles fits
+      cleanly, the honest conclusion may be that ADHD isn't the right frame — see the
+      <a href="lookalikes.html">look-alikes</a>.</p>
+    </div>
+  </main>
+
+  <footer class="site">
+    <p>adhdguide — an educational resource. Profiles synthesize DSM-5 criteria with the clinical
+    literature on adult ADHD (Barkley, Brown, Hallowell/Ratey); where checklist and lived picture
+    diverge, we say so explicitly.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script>
+    (function () {
+      const order = ["inattentive", "hyperactive", "combined"];
+      const jump = [];
+      const wrap = document.getElementById("pres-list");
+      order.forEach(function (key) {
+        const p = PRESENTATIONS[key];
+        jump.push('<a href="#pres-' + key + '"><span class="type-num ' + p.cls + '">' + p.short + '</span>' +
+                  p.name + '</a>');
+
+        const sec = document.createElement("section");
+        sec.className = "card " + p.cls;
+        sec.id = "pres-" + key;
+        sec.innerHTML =
+          '<div class="type-head">' +
+            '<span class="type-num">' + p.short + '</span>' +
+            '<h2 style="margin:0">' + p.name + '</h2>' +
+            '<span class="quiz-meta">' + p.aka + '</span>' +
+          '</div>' +
+          '<p style="margin-top:0.75rem">' + p.summary + '</p>' +
+          '<h3>Common signs</h3>' +
+          '<ul>' + p.signs.map(function (s) { return "<li>" + s + "</li>"; }).join("") + '</ul>' +
+          '<p><strong>In adults:</strong> ' + p.adult + '</p>' +
+          '<p><strong>Who gets missed:</strong> ' + p.missed + '</p>' +
+          '<details class="more">' +
+            '<summary>⚑ Commonly mislabeled as / by</summary>' +
+            p.mislabels.map(function (m) { return "<p>" + m + "</p>"; }).join("") +
+            '<p><a href="lookalikes.html">Full look-alikes guide →</a></p>' +
+          '</details>';
+        wrap.appendChild(sec);
+      });
+      document.getElementById("pres-jump").innerHTML = jump.join("");
+
+      // Content is injected after parse, so the browser's native anchor jump
+      // fires before the target exists — redo it now that the sections are in.
+      if (location.hash) {
+        const target = document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView({ behavior: "instant", block: "start" });
+      }
+    })();
+  </script>
+</body>
+</html>
