@@ -1,6 +1,6 @@
 /* Question banks.
  * Each item: { text, w: {domain: weight}, k: {context: weight}, c: {confound: weight} }
- *  - w: contribution to trait-domain scores (ia, hi, ef, er); frequency 1–5 scaled 0–1 first
+ *  - w: contribution to trait-domain scores (ia, hi, ef, er); agreement 1–5 scaled 0–1 first
  *  - k: contribution to context checks (onset, pervasive, impair)
  *  - c: contribution to confound (look-alike) scales
  * Items may carry both trait and confound weight: agreement raises an ADHD domain AND
@@ -23,12 +23,12 @@ const SHORT_TEST = [
   { text: "Boredom feels closer to pain than to mild discomfort.", w: { er: 0.9, hi: 0.2 } },
 
   // ---- Context checks ----
-  { text: "These patterns were already visible before I was 12 — in report cards, teacher comments, or family stories.", k: { onset: 1 } },
-  { text: "They show up in at least two areas of my life (work and home, school and friendships), even in good, low-stress periods.", k: { pervasive: 1 } },
-  { text: "They've cost me concretely — grades below my ability, missed deadlines, late fees, strained relationships, or jobs.", k: { impair: 1 } },
+  { text: "My attention and restlessness patterns were already visible before I was 12 — in report cards, teacher comments, or family stories.", k: { onset: 1 } },
+  { text: "My attention and organization difficulties show up in at least two areas of my life (work and home, school and friendships), even in good, low-stress periods.", k: { pervasive: 1 } },
+  { text: "My attention and organization difficulties have cost me concretely — grades below my ability, missed deadlines, late fees, strained relationships, or jobs.", k: { impair: 1 } },
 
   // ---- Look-alike screeners — pure confound detectors, no trait weight ----
-  { text: "My distraction has a content: I'm pulled toward specific worries, not toward nothing in particular — and my body carries them (tension, poor sleep).", c: { anxiety: 1 } },
+  { text: "My distraction is usually about specific worries — not about nothing in particular — and my body carries them (tension, racing heart, poor sleep).", c: { anxiety: 1 } },
   { text: "For weeks at a stretch I lose interest and pleasure in nearly everything; my focus problems arrived together with a low-mood period.", c: { depression: 1 } },
   { text: "My focus problems closely track my sleep — after a few genuinely rested days, they mostly fade.", c: { sleep: 1 } },
   { text: "My high-energy, impulsive stretches come in distinct episodes of days or weeks with much less need for sleep — noticeably different from my baseline.", c: { bipolar: 1 } },
@@ -40,7 +40,7 @@ const SHORT_TEST = [
 const FULL_TEST = [
   // ---- Inattention ----
   { text: "I lose the thread of conversations, lectures, or reading because my mind has drifted — even when the topic matters to me.", w: { ia: 1 } },
-  { text: "Careless mistakes slip into my work despite my knowing better — wrong details, skipped steps, misread instructions.", w: { ia: 1 } },
+  { text: "Careless mistakes slip into my work even though I know better — wrong details, skipped steps, misread instructions.", w: { ia: 1 } },
   { text: "When a task is routine or effortful, my attention slides off it within minutes, no matter how hard I clamp down.", w: { ia: 1 } },
   { text: "I realize mid-conversation that I've heard nothing for a while, even though I meant to listen.", w: { ia: 1 } },
   { text: "I avoid or endlessly postpone tasks that require sustained mental effort — forms, taxes, long reports.", w: { ia: 1, ef: 0.3 } },
@@ -62,7 +62,7 @@ const FULL_TEST = [
   { text: "Time is slippery for me: I'm chronically late, or absurdly early because I can't trust my own time sense.", w: { ef: 1 } },
   { text: "I underestimate how long things will take — badly and consistently.", w: { ef: 1 } },
   { text: "Starting a task can feel like a physical wall, even when the task is small and I want it done.", w: { ef: 1 }, c: { depression: 0.25 } },
-  { text: "My projects accumulate as open loops: started, 80% finished, abandoned once the interesting part ended.", w: { ef: 1, ia: 0.3 } },
+  { text: "My projects pile up unfinished — started with enthusiasm, abandoned once the interesting part ended.", w: { ef: 1, ia: 0.3 } },
   { text: "Without an external deadline, a crisis, or another person, it's very hard to make myself do things I fully intend to do.", w: { ef: 1 } },
   { text: "My spaces — desk, car, inbox, bag — drift into chaos unless something external forces order.", w: { ef: 0.9 } },
   { text: "I forget appointments, errands, and promises unless they're written down and the reminder actually fires.", w: { ef: 1, ia: 0.3 } },
@@ -77,16 +77,16 @@ const FULL_TEST = [
   { text: "Boredom feels genuinely aversive to me — closer to pain than to mild discomfort.", w: { er: 0.8, hi: 0.3 } },
 
   // ---- Context checks ----
-  { text: "Teachers or family described me in primary school with phrases like 'doesn't apply themselves,' 'careless,' 'talks too much,' or 'off in their own world.'", k: { onset: 1 } },
-  { text: "Looking back honestly, these patterns already existed before age 12 — school structure just contained them.", k: { onset: 1 } },
-  { text: "These difficulties show up in at least two areas of life — work AND home, or school AND friendships — not just one.", k: { pervasive: 1 } },
+  { text: "When I was a child, teachers or family described me with phrases like 'doesn't apply themselves,' 'careless,' 'talks too much,' or 'off in their own world.'", k: { onset: 1 } },
+  { text: "Looking back honestly, my attention and restlessness patterns already existed before I was 12 — even if school's structure kept them from causing obvious trouble.", k: { onset: 1 } },
+  { text: "My attention and organization difficulties show up in at least two areas of life — work AND home, or school AND friendships — not just one.", k: { pervasive: 1 } },
   { text: "Even during good periods — low stress, decent sleep, work I enjoy — the distractibility and disorganization persist.", k: { pervasive: 1 } },
-  { text: "These patterns have cost me concretely: grades below ability, missed deadlines, lost items and late fees, strained relationships, or jobs.", k: { impair: 1 } },
-  { text: "I've built elaborate workarounds — alarms, lists, body-doubling, deadline all-nighters — without which things fall apart.", k: { impair: 0.9 } },
+  { text: "My attention and organization difficulties have cost me concretely: grades below ability, missed deadlines, lost items and late fees, strained relationships, or jobs.", k: { impair: 1 } },
+  { text: "I've built elaborate workarounds — alarms, lists, working alongside someone to stay on task, deadline all-nighters — and without them things fall apart.", k: { impair: 0.9 } },
 
   // ---- Look-alike screeners ----
   // Anxiety
-  { text: "My concentration problems have a content: I'm distracted by specific worries, not by nothing in particular.", c: { anxiety: 1 } },
+  { text: "When I'm distracted, it's usually by specific worries — not by nothing in particular.", c: { anxiety: 1 } },
   { text: "My body carries worry — muscle tension, racing heart, poor sleep — even when nothing specific is wrong.", c: { anxiety: 1 } },
   { text: "My restlessness feels like dread or being on edge, more than like an engine that wants to move.", c: { anxiety: 0.9 } },
   // Depression
@@ -100,7 +100,7 @@ const FULL_TEST = [
   // Bipolar spectrum
   { text: "I have distinct periods of days or weeks with dramatically elevated energy and confidence and much less need for sleep — noticeably different from my baseline.", c: { bipolar: 1 } },
   { text: "My impulsive spending, talking, or risk-taking comes in episodes with a clear start and end, rather than being constant.", c: { bipolar: 1 } },
-  { text: "People close to me can tell 'which version' of me a given month holds, based on my energy and mood.", c: { bipolar: 0.8 } },
+  { text: "People close to me can tell which 'version' of me they're getting in a given month, based on my energy and mood.", c: { bipolar: 0.8 } },
   // Autism
   { text: "Unwritten social rules that others absorb naturally have always felt like a foreign language I had to study deliberately.", c: { autism: 1 } },
   { text: "Unexpected changes of plan, or intense sensory environments (noise, light, texture), genuinely destabilize me.", c: { autism: 1 } },

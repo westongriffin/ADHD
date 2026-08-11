@@ -17,7 +17,13 @@ explicit look-alike screening, and no diagnostic pretensions.
   exhaustive screen. Both score four trait domains (inattention, hyperactivity-impulsivity,
   executive function, emotional regulation), run the three context checks a diagnosis actually
   requires (childhood onset, cross-setting presence, impairment), and flag look-alike patterns in
-  the results.
+  the results. Items are rated on an agreement scale.
+- **Toolbox** (`adhd-site/toolbox.html`) — interactive tools, all client-side: a filterable
+  library of 30+ strategies, a visual focus timer, a task splitter with a highlighted "next tiny
+  step" (persisted in localStorage), and a printable evaluation-prep worksheet.
+- **Resources** (`adhd-site/resources.html`) — curated organizations, books, podcasts/channels,
+  clinical guidelines, communities, an honest treatment-evidence overview, and school/work
+  accommodation guidance.
 
 ## Running
 

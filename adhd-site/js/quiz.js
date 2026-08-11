@@ -4,12 +4,14 @@
 (function () {
   "use strict";
 
+  /* Agreement scale, not frequency: the items are statements (including facts
+   * like childhood onset), which "Never…Very often" cannot coherently answer. */
   const LIKERT = [
-    "Never",
-    "Rarely",
-    "Sometimes",
-    "Often",
-    "Very often"
+    "Strongly disagree",
+    "Disagree",
+    "Neutral / unsure",
+    "Agree",
+    "Strongly agree"
   ];
 
   // A domain scale at or above this (0–100) counts as elevated.
@@ -238,7 +240,7 @@
     }
 
     if (patterned) {
-      html += '<div class="callout"><p><strong>If this result rings true,</strong> the real-world next step is an evaluation by someone qualified to make the call — a psychologist, psychiatrist, or physician experienced with adult ADHD — ideally one who asks about your childhood, your sleep, and your mood, not just your symptoms today. The <a href="lookalikes.html">look-alikes page</a> describes what a good evaluation rules out.</p></div>';
+      html += '<div class="callout"><p><strong>If this result rings true,</strong> the real-world next step is an evaluation by someone qualified to make the call — a psychologist, psychiatrist, or physician experienced with adult ADHD — ideally one who asks about your childhood, your sleep, and your mood, not just your symptoms today. The <a href="lookalikes.html">look-alikes page</a> describes what a good evaluation rules out, the <a href="toolbox.html#eval-prep">toolbox</a> has a printable worksheet for preparing that appointment (plus practical strategies you can start today), and the <a href="resources.html">resources page</a> lists organizations, books, and communities worth your time.</p></div>';
     }
 
     if (bankName === "short") {

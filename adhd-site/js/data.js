@@ -161,6 +161,106 @@ const HIDDEN_AS = [
   { label: "“Just stressed / just modern life”", how: "Everyone's attention is worse in the phone era, so real impairment gets normalized away. The tell: ADHD-level difficulty predates smartphones in the person's history, survives digital detoxes, and costs jobs and relationships, not just scrolling time." }
 ];
 
+/* Strategy library for the toolbox page.
+ * Everything here is workaround-level, not treatment: externalize, shrink,
+ * automate, and design the environment instead of betting on willpower. */
+const STRATEGY_CATS = {
+  start:  { label: "Getting started" },
+  time:   { label: "Time" },
+  memory: { label: "Memory & organization" },
+  focus:  { label: "Focus environment" },
+  emotion:{ label: "Emotion" },
+  sleep:  { label: "Sleep" },
+  work:   { label: "Work & school" },
+  social: { label: "Relationships" }
+};
+
+const STRATEGIES = [
+  // Getting started
+  { cat: "start", title: "The two-minute entry point",
+    how: "Shrink the task until it's laughably small — 'open the document,' not 'write the report.' Starting is the broken step, not working; once in motion, momentum is cheap. If the tiny version still won't start, it's still too big." },
+  { cat: "start", title: "Body doubling",
+    how: "Work alongside another person — in the same room, on a video call, or in an online co-working session. You don't interact; they just exist. External presence supplies the activation an ADHD brain won't self-generate for dull tasks." },
+  { cat: "start", title: "Temptation bundling",
+    how: "Pair a dreaded task with something pleasant that's only allowed during the task: that podcast only while doing dishes, that fancy coffee only while doing taxes. You're borrowing interest from one activity to fuel another." },
+  { cat: "start", title: "Manufacture a witnessed deadline",
+    how: "Self-imposed deadlines don't fire; witnessed ones do. Book the meeting where you'll present it, tell a colleague you'll send it by 4 p.m., schedule the review before the work is done. Urgency is a fuel your engine actually runs on — install some." },
+  { cat: "start", title: "Do it badly, on purpose",
+    how: "Give yourself explicit permission to produce a terrible first version — an ugly draft, a half-packed bag, a wrong plan. Perfectionism is a task-initiation tax: the standard blocks the start. Bad work is editable; nonexistent work isn't." },
+
+  // Time
+  { cat: "time", title: "Make time visible",
+    how: "Time-blindness responds to making time a thing you can see rather than estimate: analog clocks in every room, visual countdown timers, a written schedule in your eyeline. If time only exists in your head, it doesn't exist." },
+  { cat: "time", title: "Sprint, don't marathon",
+    how: "Work in short, timed sprints (10–50 minutes) with real breaks — the focus timer on this page exists for exactly this. A visible endpoint converts an unbounded slog into a boarded train, and boredom gets a scheduled exit instead of an impulsive one." },
+  { cat: "time", title: "The ×1.5 rule",
+    how: "Whatever you estimated, multiply by 1.5–2 before you promise it to anyone. ADHD time estimates are systematically, not randomly, optimistic — so correct systematically. Track a few real tasks against your guesses to find your personal multiplier." },
+  { cat: "time", title: "Alarm the transitions, not just the starts",
+    how: "The dangerous moments are exits: when to stop this task, when to leave the house, when to go to bed. Set alarms for endings — with labels ('shoes on NOW') — because momentum plus time-blindness will otherwise eat the buffer you swore you had." },
+  { cat: "time", title: "Anchor tasks to events, not clock times",
+    how: "'After my coffee' fires more reliably than 'at 9:15,' because the event is in front of you and the clock isn't. Chain new habits onto things that already happen: meds live next to the kettle, gym bag packs itself the moment laundry finishes." },
+
+  // Memory & organization
+  { cat: "memory", title: "One capture point, always",
+    how: "One notes app or one pocket notebook, and an iron rule: everything gets captured the second it appears — ideas, promises, 'I should…'. Working memory is not a storage medium; stop using it as one. Sort the capture pile later, on a schedule." },
+  { cat: "memory", title: "The launchpad",
+    how: "One bowl or hook by the door where keys, wallet, badge, and headphones live — and a rule that they never land anywhere else. You're not tidying; you're removing a daily search task from a system that can't afford it." },
+  { cat: "memory", title: "Out of sight is out of existence — so keep it in sight",
+    how: "Open shelves beat closed drawers, clear containers beat opaque ones, a wall calendar beats a hidden app. ADHD forgetting is object impermanence for tasks: design your space so the important things ambush your eyes." },
+  { cat: "memory", title: "Reminders that fire, not lists that sit",
+    how: "A list waits politely to be remembered; an alarm interrupts. Convert list items into notifications anchored to the time and place of action — 'take out bins' at 8 p.m. Tuesday at home, not on a page you'd have to think to open." },
+  { cat: "memory", title: "Close loops under two minutes on the spot",
+    how: "If a reply, filing, or decision takes less than two minutes, do it immediately — not because efficiency, but because every open loop you carry is working-memory rent, and your working memory is already over-leased." },
+
+  // Focus environment
+  { cat: "focus", title: "Design the environment, not the willpower",
+    how: "Phone in another room (not face-down — another room), site blockers during sprints, one browser tab, headphones on. Every removed temptation is a battle you no longer have to win with executive function you don't have spare." },
+  { cat: "focus", title: "Match sound to task",
+    how: "Silence, brown noise, rain, instrumental music, one familiar album on loop — different brains and different tasks want different sound floors. Experiment deliberately; many people with ADHD focus measurably better with the right steady input." },
+  { cat: "focus", title: "Fidget on purpose",
+    how: "Doodling in meetings, a fidget object, knitting during calls, walking meetings — channeled motion isn't a distraction from attention, it's often the price of it. Pick fidgets that don't demand eyes or language and let the motor idle legally." },
+  { cat: "focus", title: "The parking lot",
+    how: "Keep paper beside you while working. When an intrusive thought arrives ('reply to Sam!', 'what's that actor's name?'), write it in the lot and return. The thought wanted to be kept, not acted on — capture satisfies it." },
+  { cat: "focus", title: "One screen, one task",
+    how: "Full-screen the thing you're working on. Multiple visible windows are multiple invitations, and ADHD attention accepts invitations. This is the cheapest environmental fix that exists." },
+
+  // Emotion
+  { cat: "emotion", title: "Name rejection sensitivity when it fires",
+    how: "That physical gut-punch after criticism or a read-but-unanswered message has a name (RSD), a mechanism, and a course — fast up, fast down. Label it, and don't send the reply or make the decision for 24 hours. The feeling is real; its size is a misreport." },
+  { cat: "emotion", title: "The weather rule",
+    how: "ADHD moods are storms, not climates: intense, fast-arriving, fast-passing, and event-triggered. Before concluding anything large ('I hate this job,' 'they don't respect me'), wait for the front to pass — re-examine in a few hours, not mid-downpour." },
+  { cat: "emotion", title: "Movement is a first-line mood tool",
+    how: "Exercise is among the best-evidenced non-medication supports for ADHD — mood, focus, and impulse control all respond. It doesn't need to be a program: a hard walk when agitation spikes is using the tool. Make it stupidly easy to start (see 'two-minute entry point')." },
+  { cat: "emotion", title: "Pre-plan the boredom exits",
+    how: "Boredom mid-task will come, and it will hurt more than it does for other people. Decide the exit ramp in advance — stand up, water, 20 push-ups, look out the window for two minutes — so the exit isn't your phone, which is a one-way ramp." },
+
+  // Sleep
+  { cat: "sleep", title: "Set a bedtime alarm, not just a waking one",
+    how: "Revenge bedtime procrastination — staying up to reclaim the day — runs on time-blindness. An alarm one hour before target bedtime, labeled honestly ('you will hate tomorrow'), makes the invisible cost visible at the decision moment." },
+  { cat: "sleep", title: "Park the mind on paper",
+    how: "Ten minutes before bed, brain-dump tomorrow onto paper: tasks, worries, the thing you must not forget. The 1 a.m. racing mind is often working memory refusing to power down while it's still holding things. Put them down somewhere safe first." },
+  { cat: "sleep", title: "Guard the wake time",
+    how: "A consistent wake time — same hour, weekends included, light immediately — is the strongest lever on a delayed sleep rhythm, which is disproportionately common with ADHD. The bedtime follows the wake time; it doesn't work the other way around." },
+
+  // Work & school
+  { cat: "work", title: "Get it in writing",
+    how: "Spoken instructions evaporate; email survives. After meetings, send the summary yourself ('so I'm doing X by Friday, right?') — it fixes your memory, catches misunderstandings, and quietly builds a reputation for reliability instead of the opposite." },
+  { cat: "work", title: "Spend your best focus on the worst task",
+    how: "Whatever daily window your focus is genuinely good — first coffee, late night — spend it on the most aversive item, not the most interesting one. Interest-driven work will happen anyway; the dreaded thing only happens on purpose." },
+  { cat: "work", title: "Break big deliverables into witnessed stages",
+    how: "One deadline in six weeks is an ADHD trap; four staged check-ins is a structure. Ask for interim reviews explicitly — it's a normal, reasonable accommodation, and it converts one distant cliff into several nearby, motivating ledges." },
+  { cat: "work", title: "Automate everything recurring",
+    how: "Autopay every bill, standing orders, subscription deliveries for essentials, calendar templates for routines. Every automated task is one your executive system permanently stops carrying — and late fees are an ADHD tax you can actually cancel." },
+
+  // Relationships
+  { cat: "social", title: "Tell the people who matter how the machine works",
+    how: "Unexplained ADHD reads as not caring: lateness reads as disrespect, forgetting as indifference. Naming the mechanism — with the fixes you're using, not as a blanket excuse — changes the story from 'doesn't care' to 'cares, works differently.'" },
+  { cat: "social", title: "The repeat-back protocol",
+    how: "When plans are made, repeat them back out loud and put them in the calendar while the other person watches. It feels mechanical for ten seconds and prevents the hurt of a forgotten dinner, which lasts considerably longer." },
+  { cat: "social", title: "Listen with your hands busy",
+    how: "If eye-contact stillness makes you drift mid-conversation, say so and doodle or fidget while listening — most people prefer a slightly fidgety person who heard them to a perfectly still one who didn't." }
+];
+
 if (typeof module !== "undefined") {
-  module.exports = { DOMAINS, CONTEXT_CHECKS, PRESENTATIONS, CONFOUNDS, HIDDEN_AS };
+  module.exports = { DOMAINS, CONTEXT_CHECKS, PRESENTATIONS, CONFOUNDS, HIDDEN_AS, STRATEGY_CATS, STRATEGIES };
 }

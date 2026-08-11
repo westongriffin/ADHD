@@ -373,6 +373,96 @@ details summary:hover { color: var(--accent); }
 .result-flag { margin-top: 1rem; }
 .result-flag h4 { margin: 0 0 0.35rem; }
 
+/* ---------- Toolbox: strategy library ---------- */
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 0.75rem; }
+.chip {
+  font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  padding: 0.3rem 0.9rem; border-radius: 999px;
+  border: 1px solid var(--border); background: var(--surface); color: var(--ink-2);
+  box-shadow: var(--shadow);
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.chip:hover { border-color: var(--accent); color: var(--ink); }
+.chip.sel { background: var(--accent); border-color: var(--accent); color: #fff; }
+.tool-search {
+  width: 100%; font: inherit;
+  padding: 0.6rem 0.9rem; margin: 0.25rem 0 0.5rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink);
+}
+.tool-search::placeholder { color: var(--muted); }
+.strategy-count { color: var(--muted); font-size: 0.85rem; margin: 0.25rem 0 0; }
+
+/* ---------- Toolbox: focus timer ---------- */
+.timer-wrap { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; align-items: center; }
+.timer-ring { position: relative; width: 220px; height: 220px; flex: none; }
+.timer-ring svg { display: block; transform: rotate(-90deg); }
+.timer-ring .track { stroke: var(--hairline); }
+.timer-ring .fill { stroke: var(--accent); transition: stroke-dashoffset 0.25s linear; }
+.timer-ring.done .fill { stroke: var(--d-ef); }
+.timer-label {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-variant-numeric: tabular-nums;
+}
+.timer-label b { font-size: 2.6rem; line-height: 1.1; color: var(--ink); }
+.timer-label span { color: var(--muted); font-size: 0.85rem; }
+.timer-controls { flex: 1 1 16rem; min-width: 0; }
+.timer-controls .row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; align-items: center; }
+.timer-controls input[type="number"] {
+  font: inherit; width: 5.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface); color: var(--ink);
+}
+
+/* ---------- Toolbox: task splitter ---------- */
+.step-input-row { display: flex; gap: 0.5rem; margin: 0.75rem 0; }
+.step-input-row input {
+  flex: 1; min-width: 0; font: inherit;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink);
+}
+.step-list { list-style: none; padding: 0; margin: 0.75rem 0; }
+.step-list li {
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.5rem 0.25rem; border-bottom: 1px solid var(--hairline);
+}
+.step-list li:last-child { border-bottom: none; }
+.step-list input[type="checkbox"] { width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--accent); }
+.step-list .txt { flex: 1; min-width: 0; color: var(--ink); overflow-wrap: anywhere; }
+.step-list li.done .txt { color: var(--muted); text-decoration: line-through; }
+.step-list li.next { background: color-mix(in srgb, var(--accent) 7%, transparent); border-radius: 8px; }
+.step-list .next-tag { flex: none; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+.step-list .del {
+  flex: none; font: inherit; line-height: 1; cursor: pointer;
+  background: none; border: none; color: var(--muted);
+  padding: 0.25rem 0.4rem; border-radius: 6px;
+}
+.step-list .del:hover { color: var(--serious); background: var(--page); }
+
+/* ---------- Toolbox: evaluation-prep worksheet ---------- */
+.prep-list { list-style: none; padding: 0; margin: 0.5rem 0; }
+.prep-list li { padding: 0.3rem 0; }
+.prep-list label { display: flex; gap: 0.6rem; align-items: baseline; color: var(--ink-2); cursor: pointer; }
+.prep-list input[type="checkbox"] { width: 1.05rem; height: 1.05rem; flex: none; position: relative; top: 0.15rem; accent-color: var(--accent); }
+.prep-notes {
+  width: 100%; min-height: 6rem; resize: vertical; font: inherit;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border); border-radius: var(--radius);
+  background: var(--surface); color: var(--ink);
+}
+
+/* Print: only the evaluation-prep worksheet, on white, with visible checkboxes */
+@media print {
+  body.print-eval { background: #fff; }
+  body.print-eval header.site, body.print-eval footer.site { display: none !important; }
+  body.print-eval main > *:not(#eval-prep) { display: none !important; }
+  body.print-eval #eval-prep .no-print { display: none !important; }
+  body.print-eval #eval-prep.card { box-shadow: none; border: none; padding: 0; }
+}
+
 footer.site {
   border-top: 1px solid var(--hairline);
   color: var(--muted); font-size: 0.85rem;
