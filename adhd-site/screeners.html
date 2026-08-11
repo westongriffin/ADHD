@@ -6,15 +6,15 @@
   <title>ADHD Screeners — adhdguide</title>
   <meta name="description" content="Two ADHD self-screeners — a 20-item quick screen and a 56-item exhaustive screen — that check childhood onset, cross-context presence, and the look-alikes (anxiety, depression, sleep, bipolar, autism, trauma, OCD).">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='none' stroke='%232a78d6' stroke-width='7'/%3E%3Cpath d='M24 62 L42 44 L54 56 L78 32' fill='none' stroke='%23eb6834' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f9f9f7">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site">
     <div class="bar">
       <a class="brand" href="index.html">adhd<span>guide</span></a>
-      <nav class="main" aria-label="Main">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="main" id="site-nav" aria-label="Main">
         <a href="index.html">Overview</a>
         <a href="presentations.html">The 3 Presentations</a>
         <a href="lookalikes.html">Look-alikes</a>
@@ -86,6 +86,7 @@
     flags compare it against known look-alike patterns.</p>
   </footer>
 
+  <script src="js/nav.js"></script>
   <script src="js/data.js"></script>
   <script src="js/questions.js"></script>
   <script src="js/quiz.js"></script>

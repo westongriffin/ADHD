@@ -173,9 +173,13 @@
     const flags = buildFlags(result);
     const patterned = hyp.key !== "low";
 
+    const ranked = DOMAIN_ORDER.slice().sort(function (a, b) { return result.domains[b] - result.domains[a]; });
+
     let html = "";
     html += '<p class="kicker">' + (bankName === "short" ? "Quick screener" : "Exhaustive screener") + " result</p>";
     html += "<h2 style='margin-top:0'>" + esc(hyp.title) + "</h2>";
+    html += '<p><span class="pill">Strongest domain: ' + esc(DOMAINS[ranked[0]].label) + '</span>' +
+            '<span class="pill">Runner-up: ' + esc(DOMAINS[ranked[1]].label) + '</span></p>';
     html += "<p>" + esc(hyp.text) + "</p>";
     if (hyp.key === "combined" || hyp.key === "inattentive" || hyp.key === "hyperactive") {
       html += '<p><a href="presentations.html#pres-' + hyp.key + '">Read the full ' + esc(hyp.title.split(" ADHD")[0].toLowerCase()) + ' profile →</a></p>';
@@ -183,7 +187,7 @@
 
     // Score chart: single measure (0–100), one hue, values direct-labeled.
     html += "<h3>Your four domain scores</h3>";
-    const topDomain = DOMAIN_ORDER.slice().sort(function (a, b) { return result.domains[b] - result.domains[a]; })[0];
+    const topDomain = ranked[0];
     html += '<div class="score-chart" role="img" aria-label="Bar chart of scores across four ADHD trait domains">';
     DOMAIN_ORDER.forEach(function (d) {
       html += '<div class="score-row' + (d === topDomain ? " top" : "") + '">' +

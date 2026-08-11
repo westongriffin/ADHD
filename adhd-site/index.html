@@ -6,15 +6,15 @@
   <title>ADHD — Presentations, Look-alikes &amp; Honest Screening</title>
   <meta name="description" content="A guide to ADHD's three presentations, executive function, and emotional regulation — with an honest look at the conditions that imitate ADHD (and the labels ADHD hides under) and two screeners that check for them.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='none' stroke='%232a78d6' stroke-width='7'/%3E%3Cpath d='M24 62 L42 44 L54 56 L78 32' fill='none' stroke='%23eb6834' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-  <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0d0d0d" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f9f9f7">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site">
     <div class="bar">
       <a class="brand" href="index.html">adhd<span>guide</span></a>
-      <nav class="main" aria-label="Main">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+      <nav class="main" id="site-nav" aria-label="Main">
         <a href="index.html" aria-current="page">Overview</a>
         <a href="presentations.html">The 3 Presentations</a>
         <a href="lookalikes.html">Look-alikes</a>
@@ -47,6 +47,26 @@
       </div>
     </section>
 
+    <div class="symbol-wrap" aria-hidden="true">
+      <svg width="360" height="360" viewBox="0 0 360 360">
+        <!-- four 80° arcs, one per domain, clockwise from the top -->
+        <path class="arc arc-ia" d="M 90 72.8 A 140 140 0 0 1 270 72.8"/>
+        <path class="arc arc-hi" d="M 287.2 90 A 140 140 0 0 1 287.2 270"/>
+        <path class="arc arc-ef" d="M 270 287.2 A 140 140 0 0 1 90 287.2"/>
+        <path class="arc arc-er" d="M 72.8 270 A 140 140 0 0 1 72.8 90"/>
+        <g text-anchor="middle">
+          <text class="center-label" x="180" y="180">ADHD</text>
+          <text class="center-sub" x="180" y="214">four domains · one engine</text>
+        </g>
+      </svg>
+    </div>
+    <p class="domain-legend" aria-hidden="true">
+      <span class="l-ia">Inattention</span>
+      <span class="l-hi">Hyperactivity–impulsivity</span>
+      <span class="l-ef">Executive function</span>
+      <span class="l-er">Emotional regulation</span>
+    </p>
+
     <h2>The four domains this site talks about</h2>
     <p>
       Diagnosis formally counts symptoms in the first two. The second two are "associated features" —
@@ -78,12 +98,6 @@
         present in most actual lives with ADHD.</p>
       </div>
     </div>
-    <p class="domain-legend" aria-hidden="true">
-      <span class="l-ia">Inattention</span>
-      <span class="l-hi">Hyperactivity–impulsivity</span>
-      <span class="l-ef">Executive function</span>
-      <span class="l-er">Emotional regulation</span>
-    </p>
 
     <h2>The interest-based engine</h2>
     <p>
@@ -162,5 +176,7 @@
     <p>adhdguide — an educational resource. Not affiliated with any medical body; not a source of
     medical or psychological advice.</p>
   </footer>
+
+  <script src="js/nav.js"></script>
 </body>
 </html>
