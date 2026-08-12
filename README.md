@@ -1,6 +1,6 @@
 # ADHD
 
-**adhdguide** — a static educational site about ADHD, built in the same spirit (and design system)
+**ADHD Guide** — a static educational site about ADHD, built in the same spirit (and design system)
 as the companion [enneagram site](https://github.com/westongriffin/Enneagram): honest framing,
 explicit look-alike screening, and no diagnostic pretensions.
 
