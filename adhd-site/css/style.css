@@ -336,8 +336,14 @@ details summary:hover { color: var(--accent); }
   box-shadow: var(--shadow);
   transition: border-color 0.12s ease, background 0.12s ease, transform 0.12s ease;
 }
-.likert button:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-1px); }
+/* Hover styling only on devices that truly hover — on touch screens the
+ * browser's "sticky hover" would leave the next question's button at the same
+ * position looking selected after each tap. */
+@media (hover: hover) {
+  .likert button:hover { border-color: var(--accent); color: var(--ink); transform: translateY(-1px); }
+}
 .likert button.sel { background: var(--accent); color: #fff; border-color: var(--accent); }
+.likert button:focus:not(:focus-visible) { outline: none; }
 @media (max-width: 620px) {
   .likert { grid-template-columns: 1fr; gap: 0.55rem; }
   .likert button { font-size: 0.95rem; padding: 0.8rem 1rem; text-align: left; }

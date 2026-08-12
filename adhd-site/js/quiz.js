@@ -77,6 +77,12 @@
         b.classList.add("sel");
         setTimeout(function () {
           advancing = false;
+          // Drop focus from the tapped button so no highlight (focus ring or
+          // sticky hover) carries over to the same position on the next question.
+          b.blur();
+          if (document.activeElement && document.activeElement !== document.body) {
+            document.activeElement.blur();
+          }
           if (idx < bank.length - 1) {
             idx += 1;
             renderQuestion();
