@@ -17,7 +17,12 @@ explicit look-alike screening, and no diagnostic pretensions.
   exhaustive screen. Both score four trait domains (inattention, hyperactivity-impulsivity,
   executive function, emotional regulation), run the three context checks a diagnosis actually
   requires (childhood onset, cross-setting presence, impairment), and flag look-alike patterns in
-  the results. Items are rated on an agreement scale.
+  the results. Items are rated on an agreement scale. Results can be shared (a link that
+  encodes scores only — never answers), downloaded as a PDF via print, and are remembered in
+  localStorage so the site can personalize: the overview shows your result, the matching
+  presentation is badged, raised look-alike flags surface on the look-alikes page, and the
+  toolbox suggests starting filters. A "forget" control clears everything; nothing leaves
+  the browser.
 - **Toolbox** (`adhd-site/toolbox.html`) — interactive tools, all client-side: a filterable
   library of 30+ strategies, a visual focus timer, a task splitter with a highlighted "next tiny
   step" (persisted in localStorage), and a printable evaluation-prep worksheet.

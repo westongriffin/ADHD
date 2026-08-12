@@ -465,6 +465,9 @@ details summary:hover { color: var(--accent); }
   background: var(--surface); color: var(--ink);
 }
 
+/* ---------- Results actions ---------- */
+.share-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+
 /* Print: only the evaluation-prep worksheet, on white, with visible checkboxes */
 @media print {
   body.print-eval { background: #fff; }
@@ -472,6 +475,16 @@ details summary:hover { color: var(--accent); }
   body.print-eval main > *:not(#eval-prep) { display: none !important; }
   body.print-eval #eval-prep .no-print { display: none !important; }
   body.print-eval #eval-prep.card { box-shadow: none; border: none; padding: 0; }
+}
+
+/* Print: only the screener results ("Download PDF" = print to PDF) */
+@media print {
+  body.print-results { background: #fff; }
+  body.print-results header.site, body.print-results footer.site { display: none !important; }
+  body.print-results main > *:not(#results) { display: none !important; }
+  body.print-results #results .no-print { display: none !important; }
+  body.print-results #results-body.card { box-shadow: none; border: none; padding: 0; }
+  body.print-results #results details { display: none; }
 }
 
 footer.site {
